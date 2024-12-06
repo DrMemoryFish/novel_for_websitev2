@@ -1,0 +1,27 @@
+[
+    {
+      "name": "Character 1",
+      "image": "assets/andrea.jpg",
+      "description": "Short description about Character 1",
+      "backstory": "Backstory of Character 1"
+    },
+    {
+      "name": "Character 2",
+      "image": "assets/sorin.jpg",
+      "description": "Short description about Character 2",
+      "backstory": "Backstory of Character 2"
+    },
+    {
+      "name": "Character 3",
+      "image": "assets/character3.jpg",
+      "description": "Short description about Character 3",
+      "backstory": "Backstory of Character 3"
+    },
+    {
+      "name": "Character 4",
+      "image": "assets/character4.jpg",
+      "description": "Short description about Character 4",
+      "backstory": "Backstory of Character 4"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novel Characters</title>
+  <link rel="stylesheet" href="output.css">
+</head>
+<body class="font-sans p-5">
+  <div class="novel-info text-center mb-10">
+    <h1 class="text-3xl font-bold">Novel Title</h1>
+    <p class="mt-2">Short description of the novel...</p>
+  </div>
+
+  <div class="character-gallery flex justify-center gap-5"></div>
+
+  <div class="character-details mt-5 text-center p-3 border border-gray-300 rounded-lg hidden">
+    <h3 id="character-name" class="text-lg font-semibold">Character Name</h3>
+    <p id="character-description" class="text-sm"></p>
+    <p id="character-backstory" class="text-sm"></p>
+  </div>
+
+  <!-- Pop-out card container -->
+  <div id="pop-out-card" class="hidden absolute bg-white rounded-lg shadow-lg p-4 z-50 max-w-lg mx-auto"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
