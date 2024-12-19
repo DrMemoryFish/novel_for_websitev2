@@ -625,10 +625,6 @@ video {
   margin-top: 0.75rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .flex {
   display: flex;
 }
@@ -673,15 +669,6 @@ video {
   border-radius: 0.5rem;
 }
 
-.border {
-  border-width: 1px;
-}
-
-.border-gray-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -690,10 +677,6 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.p-3 {
-  padding: 0.75rem;
 }
 
 .p-4 {
@@ -746,10 +729,6 @@ video {
   font-weight: 700;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity, 1));
@@ -770,93 +749,100 @@ video {
   height: 250px;
   /* Initial height */
   overflow: hidden;
+  /* Restrict overflowing content */
   border-radius: 10px;
   display: flex;
-  /* Use flexbox for the layout */
-  flex-direction: column;
-  /* Stack image and text initially */
-  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  /* Use flexbox for layout */
+  flex-direction: row;
+  /* Horizontal layout */
+  transition: width 0.5s ease, height 0.5s ease, transform 0.3s ease;
 }
 
 /* Image container */
 
-.character-card img {
+.character-card .character-image {
+  flex: 1 1 100%;
+  /* Take full width in collapsed state */
+  height: 100%;
+  overflow: hidden;
+  /* Keep the image inside the container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: flex-basis 0.5s ease;
+  /* Smooth transition for resizing */
+}
+
+.character-card .character-image img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
-  transition: transform 0.3s ease;
-  /* Smooth transition for the image */
+  -o-object-position: center;
+     object-position: center;
+  transition: transform 0.5s ease;
+  /* Smooth scaling for the image */
 }
 
-/* Hover (expand animation) */
+/* Text container */
 
-.character-card:hover {
-  transform: scale(1.05);
+.character-card .character-text {
+  flex: 0 1 0%;
+  /* Start with no space in collapsed state */
+  opacity: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Prevent overflow */
+  transition: flex-basis 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
 
 /* Expanded state */
 
 .character-card.expanded {
   width: 500px;
-  /* Expanded width */
-  height: 250px;
-  /* Maintain consistent height */
-  flex-direction: row;
-  /* Horizontal layout */
-  transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease, opacity 0.3s ease;
+  /* Double the initial width */
+  height: 400px;
+  /* Double the initial height */
 }
-
-/* Image in expanded state */
 
 .character-card.expanded .character-image {
-  flex: 0 0 25%;
-  /* 25% width */
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  transform-origin: center center;
-  /* Ensure scaling happens from the center */
+  flex: 0 0 50%;
+  /* Increase image width to 40% of the card */
+  transition: flex-basis 0.5s ease;
+  /* Smooth transition */
 }
-
-/* Text in expanded state */
 
 .character-card.expanded .character-text {
-  flex: 0 0 75%;
-  /* 75% width */
-  padding: 20px;
+  flex: 0 0 60%;
+  /* Adjust text container to 60% */
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  padding: 20px;
+  transition: flex-basis 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
 
-/* Text sliding in during expansion */
+/* Hover (expand animation) */
 
-.character-card .character-text {
-  opacity: 0;
-  transform: translateX(20px);
-  /* Initial slide in */
+.character-card:hover {
+  transform: scale(1.05);
+  /* Slight zoom-in effect */
 }
 
 /* Collapse (reverse of expansion) */
 
 .character-card:not(.expanded) .character-text {
+  flex: 0 1 0%;
+  /* Collapse text to no space */
   opacity: 0;
-  transform: translateX(20px);
-  /* Slide back out */
+  /* Hide text content */
+  padding: 0;
+  /* Remove padding */
 }
 
 .character-card:not(.expanded) .character-image {
-  flex: 0 0 100%;
-  /* Take up all the space when collapsing */
-  transition: transform 0.3s ease;
-  /* Smooth transition for collapsing */
+  flex: 1 1 100%;
+  /* Reset image to full width */
   transform: scale(1);
-  /* Reset any scale when collapsing */
+  /* Reset scale for the image */
 }
 
 /* Responsive Design */
@@ -864,7 +850,7 @@ video {
 @media (max-width: 768px) {
   .character-card {
     width: 150px;
-    /* Adjust for smaller screens */
+    /* Smaller size for smaller screens */
   }
 }
 

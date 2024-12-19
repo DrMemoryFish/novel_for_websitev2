@@ -8,8 +8,7 @@ fetch('characters.json')
     const fragment = document.createDocumentFragment();
 
     data.forEach(character => {
-      // Fallback for missing image
-      const imageSrc = character.image || 'default-image.jpg';
+      const imageSrc = character.image || 'default-image.jpg'; // Fallback for missing image
 
       // Create character card
       const characterCard = document.createElement('div');
@@ -38,7 +37,7 @@ fetch('characters.json')
 
       characterCard.addEventListener('mouseleave', () => {
         clearTimeout(hoverTimer);
-        characterCard.classList.remove('expanded'); // Trigger collapse (reverse)
+        characterCard.classList.remove('expanded'); // Trigger collapse
       });
 
       // Click event handling for the pop-out card

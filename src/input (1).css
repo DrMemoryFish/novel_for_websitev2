@@ -11,7 +11,7 @@
   border-radius: 10px;
   display: flex; /* Use flexbox for the layout */
   flex-direction: row; /* Horizontal layout */
-  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease, opacity 0.3s ease;
 }
 
 /* Image container */
@@ -20,7 +20,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transition: transform 0.3s ease; /* Smooth transition for the image */
+  transition: all 0.5s ease; /* Smooth transition for the image */
 }
 
 /* Hover (expand animation) */
@@ -71,7 +71,6 @@
 .character-card:not(.expanded) .character-image {
   width: 100%; /* Take up all the space when collapsing */
   transition: all 0.5s ease; /* Smooth transition for collapsing */
-  transition-delay: 0.1s;
   transform: scale(1); /* Reset any scale when collapsing */
 }
 
